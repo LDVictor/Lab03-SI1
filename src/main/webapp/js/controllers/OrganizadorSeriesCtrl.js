@@ -191,33 +191,20 @@ angular.module("OrganizadorDeSeries").controller("OrganizadorSeriesCtrl", functi
     }
   };
 
-    $scope.avaliarSerie = function (serie, nota) {
-        if (nota < 10 || nota > 0) {
-            serie.avaliacao = nota;
-        }
-        else {
-            alert("Insira uma nota de 0 à 10.");
-        }
-    };
-
-    $scope.alterarUltimoEpisodio = function (serie, episodio) {
-        serie.ultimoEpisodio = episodio;
-    }
-
-/*  $scope.enviarRating = function (serie, rating) {
-	serie.avaliacao = rating;
+  $scope.avaliarSerie = function (serie, nota) {
+	serie.avaliacao = nota;
 	var serieAtualizada = $scope.pegarSeriePeloImdbID(serie);
 	console.log(serieAtualizada);
-	serieAtualizada.avaliacao = rating;
+	serieAtualizada.avaliacao = nota;
     $scope.atualizarSerie(serieAtualizada);
   };
 
-  $scope.enviarLastEpisode = function (serie, episode) {
-	serie.ultimoEpisodio = episode;
+  $scope.alterarUltimoEpisodio = function (serie, episodio) {
+	serie.ultimoEpisodio = episodio;
     var serieAtualizada = $scope.pegarSeriePeloImdbID(serie);
-    serieAtualizada.ultimoEpisodio = episode;
+    serieAtualizada.ultimoEpisodio = episodio;
     $scope.atualizarSerie(serieAtualizada);
-  }; */
+  };
 
   $scope.atualizarSerie = function(serie) {
     var promise = $http.put("/serie/" + serie.id, serie).then(function(response) {
